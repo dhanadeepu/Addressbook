@@ -1,7 +1,6 @@
 package com.bridgelabz.adressbooksystem;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,17 +38,15 @@ public class UC1AddressBookContact {
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
 
+        // Add a contact
         addContact();
 
+        // Edit the contact by name
         System.out.print("\nEnter first name of contact to edit: ");
         String nameToEdit = sc.nextLine();
         editContact(nameToEdit);
 
-        System.out.print("\nEnter first name of contact to delete: ");
-        String nameToDelete = sc.nextLine();
-        deleteContact(nameToDelete);
-
-        // Show updated contacts
+        // Display updated list
         System.out.println("\nAll Contacts:");
         for (Contact c : contacts) {
             System.out.println(c);
@@ -71,7 +68,7 @@ public class UC1AddressBookContact {
         int zip = sc.nextInt();
         System.out.print("Enter Phone Number: ");
         long phone = sc.nextLong();
-        sc.nextLine(); // consume newline
+        sc.nextLine(); // Consume newline
         System.out.print("Enter Email: ");
         String email = sc.nextLine();
 
@@ -84,6 +81,7 @@ public class UC1AddressBookContact {
         for (Contact c : contacts) {
             if (c.firstName.equalsIgnoreCase(name)) {
                 System.out.println("Contact Found! Enter new details...");
+
                 System.out.print("Enter New Address: ");
                 c.address = sc.nextLine();
                 System.out.print("Enter New City: ");
@@ -94,24 +92,11 @@ public class UC1AddressBookContact {
                 c.zip = sc.nextInt();
                 System.out.print("Enter New Phone Number: ");
                 c.phone = sc.nextLong();
-                sc.nextLine(); // consume newline
+                sc.nextLine(); // Consume newline
                 System.out.print("Enter New Email: ");
                 c.email = sc.nextLine();
 
                 System.out.println("Contact updated successfully.");
-                return;
-            }
-        }
-        System.out.println("Contact not found.");
-    }
-
-    public static void deleteContact(String name) {
-        Iterator<Contact> iterator = contacts.iterator();
-        while (iterator.hasNext()) {
-            Contact c = iterator.next();
-            if (c.firstName.equalsIgnoreCase(name)) {
-                iterator.remove();
-                System.out.println("Contact deleted successfully.");
                 return;
             }
         }
